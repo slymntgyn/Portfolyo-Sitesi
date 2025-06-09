@@ -1,0 +1,67 @@
+﻿@model UserDtoForUpdate
+@{
+    ViewData["Title"] = "Update User";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">@ViewData["Title"]</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">@ViewData["Title"]</div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Update" method="post" novalidate>
+                            <div class="form-group mb-3">
+                                <label asp-for="UserName" class="control-label fw-semibold"></label>
+                                <input asp-for="UserName" class="form-control" placeholder="Enter username" />
+                                <span asp-validation-for="UserName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Email" class="control-label fw-semibold"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="control-label fw-semibold">Roles</label>
+                                <div class="d-flex flex-wrap gap-3">
+                                    @foreach (var item in Model.Roles) {
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox"
+                                                       name="Roles"
+                                                       value="@item"
+                                                       checked="@(Model.UserRoles.Contains(@item))"
+                                                       class="form-check-input" />
+                                                <span class="form-check-sign">@item</span>
+                                            </label>
+                                        </div>
+
+                                    }
+                                </div>
+                                <div class="text-muted">
+                                    <small>Check the roles you want to assign to the user.</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label asp-for="PhoneNumber" class="control-label fw-semibold"></label>
+                                <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save me-2"></i> Update User
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

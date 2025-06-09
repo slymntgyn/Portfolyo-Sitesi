@@ -1,0 +1,58 @@
+﻿@model ENTITIES.Models.Projeler
+
+@{
+    ViewData["Title"] = "ProjeEkle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Projeler</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Projeler</div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="ProjeEkle" method="post">
+                            <div class="form-group">
+                                <label asp-for="Baslik" class="control-label"></label>
+                                <input asp-for="Baslik" class="form-control" />
+                                <span asp-validation-for="Baslik" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Tip" class="control-label"></label>
+                                <input asp-for="Tip" class="form-control" />
+                                <span asp-validation-for="Tip" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AltBaslik" class="control-label"></label>
+                                <input asp-for="AltBaslik" class="form-control" />
+                                <span asp-validation-for="AltBaslik" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ResimYolu" class="control-label"></label>
+                                <input asp-for="ResimYolu" class="form-control" />
+                                <span asp-validation-for="ResimYolu" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProjeUrl" class="control-label"></label>
+                                <input asp-for="ProjeUrl" class="form-control" />
+                                <span asp-validation-for="ProjeUrl" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Aciklama" class="control-label"></label>
+                                <textarea asp-for="Aciklama" class="form-control"></textarea>
+                                <span asp-validation-for="Aciklama" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </form>
+                        <button style="margin-right:0px" class="btn btn-primary">Yeni Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

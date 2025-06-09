@@ -1,0 +1,56 @@
+﻿@model List<ENTITIES.Models.Referanslar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Referanslar</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">İsim</th>
+									<th scope="col">Başlık</th>
+									<th scope="col">Açıklama</th>
+									<th scope="col">Resim</th>
+									<th scope="col">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model) {
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.Isim</td>
+										<td>@item.Baslik</td>
+										<td>@item.Aciklama</td>
+										<td>
+											@if (!string.IsNullOrEmpty(item.ImageUrl)) {
+												<img src="@item.ImageUrl" alt="@item.Baslik" style="max-width:100px;max-height:60px;" />
+											}
+										</td>
+										<td>
+											<a href="/Admin/Referanslar/ReferansGuncelle/@item.Id" class="btn btn-info btn-sm">Güncelle</a>
+											<a href="/Admin/Referanslar/ReferansSil/@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/Admin/Referanslar/ReferansEkle" class="btn btn-primary">Yeni Ekle</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

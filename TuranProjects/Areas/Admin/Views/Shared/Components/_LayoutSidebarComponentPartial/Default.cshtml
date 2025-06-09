@@ -1,0 +1,104 @@
+﻿<div class="sidebar">
+	<div class="scrollbar-inner sidebar-wrapper">
+		<div class="user">
+			<div class="photo">
+				<img src="~/Ready-Bootstrap-Dashboard-master/assets/img/profile.jpg">
+			</div>
+			<div class="info">
+				<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+					<span>
+						Admin
+						<span class="user-level">Administrator</span>
+						<span class="caret"></span>
+					</span>
+				</a>
+				<div class="clearfix"></div>
+
+				<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+					<ul class="nav">
+						<li>
+							<a href="#profile">
+								<span class="link-collapse">Profilim</span>
+							</a>
+						</li>
+						<li>
+							<a href="#edit">
+								<span class="link-collapse">Profili Düzenle</span>
+							</a>
+						</li>
+						<li>
+							<a href="#settings">
+								<span class="link-collapse">Ayarlar</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<ul class="nav">
+			<li class="nav-item">
+				<a asp-action="Index"  asp-area="Admin" asp-controller="Iletisim">
+					<i class="la la-envelope"></i> 
+					<p>İletişim</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Hakkinda">
+					<i class="la la-user"></i>
+					<p>Hakkımda</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Mesaj">
+					<i class="la la-comments"></i>
+					<p>Mesaj</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Ozellik">
+					<i class="la la-star"></i>
+					<p>Özellikler</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Projeler">
+					<i class="la la-briefcase"></i> 
+					<p>Projeler</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Referanslar">
+					<i class="la la-bookmark"></i>
+					<p>Referanslar</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="SosyalMedyalar">
+					<i class="la la-share-alt"></i> 
+					<p>Sosyal Medyalar</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="DeneyimlerList" asp-controller="Tecrubelerim">
+					<i class="la la-history"></i>
+					<p>Tecrübelerim</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="Yeteneklerim">
+					<i class="la la-cogs"></i>
+					<p>Yeteneklerim</p>
+				</a>
+			<li class="nav-item">
+				<a asp-action="Index" asp-controller="User">
+					<i class="la la-user"></i>
+					<p>Kullanıcılar</p>
+				</a>
+			</li>
+
+
+			
+			
+		</ul>
+	</div>
+</div>

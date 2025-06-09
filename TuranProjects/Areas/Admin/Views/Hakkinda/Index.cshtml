@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ENTITIES.Models.Hakkinda>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Hakkında</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Başlık</th>
+									<th scope="col">Alt Açıklama</th>
+									<th scope="col">Doğum Günü</th>
+									<th scope="col">Telefon</th>
+									<th scope="col">Şehir</th>
+									<th scope="col">Öğrenim</th>
+									<th scope="col">Email</th>
+									<th scope="col">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model) {
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.Baslik</td>
+										<td>@item.AltAciklama</td>
+										<td>@item.DogumGunu</td>
+										<td>@item.Telefon</td>
+										<td>@item.Şehir</td>
+										<td>@item.Öğrenim</td>
+										<td>@item.Mail</td>
+										<td>
+											<a asp-action="/Admin/Hakkinda/HakkindaGuncelle" asp-route-id="@item.Id">Edit</a> |
+											<a asp-action="Admin/Hakkinda/HakkindaSil" asp-route-id="@item.Id">Delete</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table><a href="/Admin/Hakkinda/HakkindaEkle" class="btn btn-primary">Yeni Ekle</a>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

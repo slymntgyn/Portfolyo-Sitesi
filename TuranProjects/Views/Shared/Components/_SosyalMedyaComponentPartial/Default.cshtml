@@ -1,0 +1,11 @@
+﻿@model List<SosyalMedyalar>
+
+
+
+<div class="social-links text-center">
+
+    @foreach (var sosyal in Model) {
+        <a href="@sosyal.Url" class="@sosyal.Icon"></a>
+    }
+
+</div>

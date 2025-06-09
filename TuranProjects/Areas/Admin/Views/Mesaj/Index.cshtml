@@ -1,0 +1,62 @@
+﻿@model List<ENTITIES.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Mesajlar</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">İsim</th>
+									<th scope="col">Email</th>
+									<th scope="col">Konu</th>
+									<th scope="col">Mesaj</th>
+									<th scope="col">Gönderilme Tarihi</th>
+									<th scope="col">Is Read</th>
+									<th scope="col">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+
+                                <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Isim</td>
+                                <td>@item.Email</td>
+                                <td>@item.Konu</td>
+                                <td>@item.Mesaj</td>
+                                <td>@item.GonderilmeTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>@(item.IsRead ? "Evet" : "Hayır")</td>
+                                <td>
+                                <a href="/Mesaj/MesajGuncelle/@item.Id" class="btn btn-info btn-sm">Güncelle</a>
+                                <a href="/Mesaj/MesajSil/@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                                </td>
+                                </tr>
+                                }
+                              </tbody>
+						</table><a href="/Admin/Mesaj/MesajEkle" class="btn btn-primary">Yeni Ekle</a>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

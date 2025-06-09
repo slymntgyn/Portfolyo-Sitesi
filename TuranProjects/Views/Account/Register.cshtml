@@ -1,0 +1,37 @@
+﻿@using ENTITIES.Dtos
+@model RegisterDto
+
+@{
+   ViewData["Title"] = "Register";
+}
+
+
+<div class="row">
+    <div>
+        <div class="col-md-12">
+            <div >
+                 <div class="text-danger" asp-validation-summary="All"></div>
+            </div>
+            <form method="post" asp-page-handler="Register">
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+
+</div>

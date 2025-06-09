@@ -1,0 +1,62 @@
+﻿@model List<ENTITIES.Models.SosyalMedyalar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Sosyal Medyalar</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Adı</th>
+									<th scope="col">Url</th>
+									<th scope="col">Icon</th>
+									<th scope="col">Durum</th>
+									<th scope="col">Sıra No</th>
+									<th scope="col">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model) {
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.Adi</td>
+										<td>@item.Url</td>
+										<td>
+											@if (!string.IsNullOrEmpty(item.Icon)) {
+												<i class="@item.Icon"></i>
+											}
+										</td>
+										<td>
+											@if (item.Durum==1) {
+												<span class="badge bg-success">Aktif</span>
+											} else {
+												<span class="badge bg-secondary">Pasif</span>
+											}
+										</td>
+										<td>@item.SiraNo</td>
+										<td>
+											<a href="/SosyalMedyalar/SosyalMedyaGuncelle/@item.Id" class="btn btn-info btn-sm">Güncelle</a>
+											<a href="/SosyalMedyalar/SosyalMedyaSil/@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/Admin/SosyalMedyalar/SosyalMedyaEkle" class="btn btn-primary">Yeni Ekle</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
