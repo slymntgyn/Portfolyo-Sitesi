@@ -1,0 +1,57 @@
+﻿@model List<ENTITIES.Models.Yeteneklerim>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Yeteneklerim</div>
+					</div>
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Yetenek</th>
+									<th scope="col">Açıklama</th>
+									<th scope="col">Yüzde</th>
+									<th scope="col">Icon</th>
+									<th scope="col">İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model) {
+									<tr>
+										<td>@item.Id</td>
+										<td>@item.Yetenek</td>
+										<td>@(string.IsNullOrEmpty(item.YetenekAciklama) ? "-" : item.YetenekAciklama)</td>
+										<td>@item.YetenekYuzde</td>
+										<td>
+											@if (!string.IsNullOrEmpty(item.YetenekIcon)) {
+												<i class="@item.YetenekIcon"></i>
+											}
+											else {
+												<span class="text-muted">Yok</span>
+											}
+										</td>
+										<td>
+											<a href="/Yeteneklerim/YetenekGuncelle/@item.Id" class="btn btn-info btn-sm">Güncelle</a>
+											<a href="/Yeteneklerim/YetenekSil/@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/Admin/Yeteneklerim/YetenekEkle" class="btn btn-primary">Yeni Ekle</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

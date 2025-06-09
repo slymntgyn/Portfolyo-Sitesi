@@ -1,0 +1,48 @@
+﻿@model ENTITIES.Models.Referanslar
+
+@{
+    ViewData["Title"] = "ReferansGuncelle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Referanslar</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Referanslar</div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="ReferansGuncelle" method="post">
+                            <div class="form-group">
+                                <label asp-for="Isim" class="control-label"></label>
+                                <input asp-for="Isim" class="form-control" />
+                                <span asp-validation-for="Isim" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Baslik" class="control-label"></label>
+                                <input asp-for="Baslik" class="form-control" />
+                                <span asp-validation-for="Baslik" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Aciklama" class="control-label"></label>
+                                <textarea asp-for="Aciklama" class="form-control"></textarea>
+                                <span asp-validation-for="Aciklama" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageUrl" class="control-label"></label>
+                                <input asp-for="ImageUrl" class="form-control" />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </form>
+                        <button style="margin-right:0px" class="btn btn-primary">Yeni Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

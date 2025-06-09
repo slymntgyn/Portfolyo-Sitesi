@@ -1,0 +1,38 @@
+﻿@{
+	Layout = null;
+}
+
+@await Component.InvokeAsync("_HeadComponentPartial")
+
+    @* Navbar alanı partial view ile alındı *@
+    @await Component.InvokeAsync("_NavbarComponentPartial")
+
+ 
+    <main class="main">
+
+        @* Hero Section *@
+        @await Component.InvokeAsync("_OzellikComponentPartial")
+
+        @* About Section *@
+		@await Component.InvokeAsync("_HakkimdaComponentPartial")
+       
+        @* Yeteneklerim Section *@
+		@await Component.InvokeAsync("_YeteneklerimComponentPartial")
+     
+        @* Tecrübelerim Section *@
+		@await Component.InvokeAsync("_TecrubelerimComponentPartial")
+
+        @* Projelerim Section *@
+		@await Component.InvokeAsync("_ProjelerimComponentPartial")
+  
+		@* Servislerim  Section *@
+		@await Component.InvokeAsync("_ServislerimComponentPartial")
+ 
+        @* İletişim Section *@
+        @* @await Component.InvokeAsync("_IletisimComponentPartial") *@
+
+    </main>
+
+    @* Footer Section *@
+    @await Component.InvokeAsync("_FooterComponentPartial")
+

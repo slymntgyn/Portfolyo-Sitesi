@@ -1,0 +1,57 @@
+﻿@model Hakkinda
+@{
+    var dogumTarihi = Convert.ToDateTime(Model.DogumGunu); 
+    var yas = DateTime.Now.Year - dogumTarihi.Year;
+
+    if (DateTime.Now < dogumTarihi.AddYears(yas)) {
+        yas--; 
+    }
+}
+<section id="about" class="about section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Hakkımda</h2>
+        <p>
+                @Model.Baslik
+        </p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+            <div class="col-lg-4">
+                <img src="@Model.ResimYolu" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-8 content">
+                <h2>.NET Developer &amp; Flutter Developer</h2>
+                <p class="fst-italic py-3">
+                    @Model.AltAciklama
+                </p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Doğum Günü:</strong> <span>@Model.DogumGunu</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Telefon:</strong> <span>@Model.Telefon</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Şehir:</strong> <span>@Model.Şehir</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Yaş:</strong> <span>
+                                    @yas
+                                </span>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Öğrenim:</strong> <span>@Model.Öğrenim</span></li>
+                            <li><i class="bi bi-chevron-right"></i> <strong>Mail:</strong> <span>@Model.Mail</span></li>
+                           
+                        </ul>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- /About Section -->

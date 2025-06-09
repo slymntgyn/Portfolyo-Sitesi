@@ -1,0 +1,59 @@
+﻿@model  IEnumerable<Projeler>
+@{
+    // Get distinct project types for filter buttons
+    var projectTypes = Model?.Select(p => p.Tip).Distinct().ToList() ?? new List<string>();
+    // Helper to generate filter class from type
+    Func<string, string> filterClass = tip => $".filter-{tip.Replace(" ", "").Replace(".", "").Replace(",", "")}";
+}
+
+<section id="portfolio" class="portfolio section light-background">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Projelerim</h2>
+        <p>
+            Bu bölümde, geliştirdiğim projelerin detaylarını ve hangi alanlarda çalışmalar yaptığımı görebilirsiniz; her bir proje, yazılım geliştirme sürecindeki tecrübelerimi ve edindiğim bilgileri yansıtmaktadır.
+        </p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                <li data-filter="*" class="filter-active">Hepsi</li>
+                @foreach (var tip in projectTypes)
+                {
+                    <li data-filter="@filterClass(tip)">@tip</li>
+                }
+            </ul><!-- End Portfolio Filters -->
+
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                @foreach (var proje in Model)
+                {
+                    var tipClass = $"filter-{proje.Tip.Replace(" ", "").Replace(".", "").Replace(",", "")}";
+                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item @tipClass">
+                        <div class="portfolio-content h-100">
+                            <img src="@proje.ResimYolu" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>@proje.Baslik</h4>
+                                <p>@proje.AltBaslik</p>
+                                @if (!string.IsNullOrEmpty(proje.ResimYolu))
+                                {
+                                    <a href="@proje.ResimYolu" title="@proje.Baslik" data-gallery="portfolio-gallery-@tipClass" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                }
+                                @if (!string.IsNullOrEmpty(proje.ProjeUrl))
+                                {
+                                    <a href="@proje.ProjeUrl" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div><!-- End Portfolio Container -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Portfolio Section -->

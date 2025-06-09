@@ -1,0 +1,58 @@
+﻿@model ENTITIES.Models.Message
+
+@{
+    ViewData["Title"] = "MesajEkle";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Mesajlar</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Mesajlar</div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="MesajEkle" method="post">
+                            <div class="form-group">
+                                <label asp-for="Isim" class="control-label"></label>
+                                <input asp-for="Isim" class="form-control" />
+                                <span asp-validation-for="Isim" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Konu" class="control-label"></label>
+                                <input asp-for="Konu" class="form-control" />
+                                <span asp-validation-for="Konu" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Mesaj" class="control-label"></label>
+                                <textarea asp-for="Mesaj" class="form-control"></textarea>
+                                <span asp-validation-for="Mesaj" class="text-danger"></span>
+                            </div>
+                       
+                            <div class="form-group">
+                                <label asp-for="GonderilmeTarihi" class="control-label"></label>
+                                <input asp-for="GonderilmeTarihi" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="GonderilmeTarihi" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsRead" class="control-label"></label>
+                                <textarea asp-for="IsRead" class="form-control"></textarea>
+                                <span asp-validation-for="IsRead" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </form>
+                        <button style="margin-right:0px" class="btn btn-primary">Yeni Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
