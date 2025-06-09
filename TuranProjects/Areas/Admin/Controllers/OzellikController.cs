@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SERVICES.Contract;
 
 namespace TuranProjects_Portfolio.Areas.Admin.Controllers
 {
@@ -36,10 +37,34 @@ namespace TuranProjects_Portfolio.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult OzellikEkle(Ozellik ozellik)
+        public IActionResult OzellikEkle(Ozellik ozellik, IFormFile? yeniResimFile, string? yeniResim)
         {
             if (ModelState.IsValid)
             {
+                if (yeniResimFile != null && yeniResimFile.Length > 0)
+                {
+                    // Save the uploaded file to wwwroot/images
+                    string imageFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                    if (!Directory.Exists(imageFolder))
+                        Directory.CreateDirectory(imageFolder);
+
+                    string fileName = Path.GetFileName(yeniResimFile.FileName);
+                    string filePath = Path.Combine(imageFolder, fileName);
+
+                    using (FileStream stream = new(filePath, FileMode.Create))
+                    {
+                        yeniResimFile.CopyTo(stream);
+                    }
+                    ozellik.Resim = "images/" + fileName;
+                }
+                else if (!string.IsNullOrEmpty(yeniResim))
+                {
+                    ozellik.Resim = "images/" + yeniResim;
+                }
+                else
+                {
+                    ozellik.Resim = null; // Save as null if no image is selected
+                }
                 _manager.OzelllikService.AddOzellikBilgi(ozellik);
                 return RedirectToAction("Index");
             }
@@ -85,11 +110,35 @@ namespace TuranProjects_Portfolio.Areas.Admin.Controllers
             return View(ozellik);
         }
         [HttpPost]
-        public IActionResult OzellikGuncelle(Ozellik item)
+        public IActionResult OzellikGuncelle(Ozellik item, IFormFile? yeniResimFile, string? yeniResim)
         {
             if (ModelState.IsValid)
             {
-                item.Resim = "images/" + item.Resim;
+                if (yeniResimFile != null && yeniResimFile.Length > 0)
+                {
+                    // Save the uploaded file to wwwroot/images
+                    string imageFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                    if (!Directory.Exists(imageFolder))
+                        Directory.CreateDirectory(imageFolder);
+
+                    string fileName = Path.GetFileName(yeniResimFile.FileName);
+                    string filePath = Path.Combine(imageFolder, fileName);
+
+                    using (FileStream stream = new(filePath, FileMode.Create))
+                    {
+                        yeniResimFile.CopyTo(stream);
+                    }
+                    item.Resim = "images/" + fileName;
+                }
+                else if (!string.IsNullOrEmpty(yeniResim))
+                {
+                    item.Resim = "images/" + yeniResim;
+                }
+                else if (string.IsNullOrEmpty(item.Resim) || item.Resim == "images/default.png")
+                {
+                    item.Resim = "images/default.png"; // Default image
+                }
+
                 _manager.OzelllikService.UpdateOzellikBilgi(item.Id, item);
                 return RedirectToAction("Index");
             }
